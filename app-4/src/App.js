@@ -2,20 +2,41 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+export default class App extends Component {
+  constructor() {
+      super();
 
-export default App;
+      this.state = {
+          username: '',
+          password: ''
+      }
+  }
+
+  enterUserName(input) {
+      this.setState({
+          username: input
+      })
+  }
+
+  enterPassWord(input) {
+      this.setState({
+          password: input
+      })
+  }
+
+  handleClick() {
+      alert(`Username: ${this.state.username} Password: ${this.state.password}`)
+  }
+
+  render() {
+      return (
+        <div>
+  
+          <input type='text' onChange={e => this.enterUserName(e.target.value)} />
+          <input type='text' onChange={e => this.enterPassWord(e.target.value)} />
+          <button onClick={() => this.handleClick()} > Login </button>
+          
+        </div>
+      );
+    }
+}
